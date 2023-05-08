@@ -1,0 +1,4 @@
+#!/bin/bash
+foo="$PYFILE"
+foo+="c"
+python3 "$PYFILE" > "$foo"
