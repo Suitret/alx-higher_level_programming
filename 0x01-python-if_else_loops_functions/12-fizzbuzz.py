@@ -12,4 +12,4 @@ def fizzbuzz():
             print("Buzz", end='')
         if j and k:
             print(i, end='')
-    print("")
+    print(" ", end='')
