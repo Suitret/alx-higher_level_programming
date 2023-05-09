@@ -3,7 +3,7 @@ def uppercase(string):
     lenght = len(string)
     j = 0
     for i in string:
-		j += 1
+        j += 1
         delim = ''
         if j == lenght:
             delim = '\n'
