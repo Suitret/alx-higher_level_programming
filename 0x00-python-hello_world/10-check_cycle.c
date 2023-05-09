@@ -51,6 +51,8 @@ int check_cycle(listint_t *list)
 	listint_t *ptr;
 	int flag = 0;
 
+	if (!list)
+		return (0);
 	while (list)
 	{
 		temp = add_nodecp(&head, list);
