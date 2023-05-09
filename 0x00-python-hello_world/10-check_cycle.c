@@ -3,20 +3,41 @@
 #include "lists.h"
 
 /**
- * search - searches a node in list
- * @list: given list
- * @node: given node
- * Return: 0 or 1
+ * add_nodecp - adds a new node
+ * @head: pointer to a pointer of the start of the list
+ * @adr: adress to be included in node
+ * Return: address of the new element or NULL if it fails
  */
-int search(listint_t *list, listint_t *node)
+cplist *add_nodecp(cplist **head, listint_t *adr)
 {
-	while (list)
+	cplist *new;
+
+	new = malloc(sizeof(cplist));
+	if (new == NULL)
+		return (NULL);
+
+	new->adr = adr;
+	new->next = *head;
+	*head = new;
+
+	return (new);
+}
+
+/**
+ * free_listcp - frees a listcp list
+ * @head: pointer to list to be freed
+ * Return: void
+ */
+void free_listcp(cplist *head)
+{
+	cplist *current;
+
+	while (head != NULL)
 	{
-		if (list == node)
-			return (1);
-		list = list->next;
+		current = head;
+		head = head->next;
+		free(current);
 	}
-	return (0);
 }
 
 /**
@@ -26,38 +47,42 @@ int search(listint_t *list, listint_t *node)
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *head = NULL, *temp, *tmp;
+	cplist *head = NULL, *temp, *cur;
+	listint_t *ptr;
+	int flag = 0;
 
 	if (!list)
 		return (0);
-
-	head = list;
-	list = list->next;
-	head->next = NULL;
-
 	while (list)
 	{
-		if (search(head, list))
-			break;
-		temp = list;
+		temp = add_nodecp(&head, list);
+		ptr = list;
 		list = list->next;
-		temp->next = head;
-		head = temp;
+		ptr->next = NULL;
 	}
-
-	temp = head;
-	head = head->next;
-	temp->next = list;
-
-	while (head)
+	cur = head->next;
+	while (cur)
 	{
-		tmp = head;
-		head = head->next;
-		tmp->next = temp;
-		temp = tmp;
+		if (cur->adr == temp->adr)
+		{
+			flag = 1;
+			break;
+		}
+		cur = cur->next;
 	}
-	if (list)
-		return (1);
-	else
-		return (0);
+	cur = (flag == 1) ? (head->next) : (head);
+	while (cur)
+	{
+		temp = cur->next;
+		if (temp)
+			temp->adr->next = cur->adr;
+		else
+			break;
+		cur = cur->next;
+	}
+	if (flag)
+		head->next->adr->next = head->adr;
+
+	free_listcp(head);
+	return (flag);
 }
