@@ -9,59 +9,28 @@
  */
 int is_palindrome(listint_t **head)
 {
-	listint_t *ptr, *ptrn;
-	int l = 0, n, flag;
+	listint_t *sl = *head, *fa = *head, *prev = NULL, *temp;
 
-	if (head == NULL)
-		return (0);
-	printf("ENter\n");
-	if (*head == NULL)
-		return (1);
-	printf("ENter\n");
-
-	ptr = *head;
-	while (ptr)
+	while (fa && fa->next)
 	{
-		l++;
-		ptr = ptr->next;
+		fa = fa->next->next;
+		temp = sl->next;
+		sl->next = prev;
+		prev = sl;
+		sl = temp;
 	}
-	n = (l % 2 == 0) ? (l / 2) : ((l - 1) / 2);
-	flag = (l % 2 == 0) ? 1 : 0;
 
-	ptr = *head;
-	while (n - 1)
-	{
-		ptr = ptr->next;
-		n--;
-	}
-	ptrn = (flag) ? (ptr->next) : (ptr->next->next);
+	if (fa)
+		sl = sl->next;
 
-	while (ptrn)
+	while (sl)
 	{
-		if (ptr->n != ptrn->n)
+		if (prev->n != sl->n)
 			return (0);
-		ptr = previous(*head, ptr);
-		ptrn = ptrn->next;
-	}
-	return (1);
-}
 
-/**
- * previous - searches the precedent of a node
- * @head: pointer to head of list
- * @node: reference node
- * Return: adress of the precedent
- */
-listint_t *previous(listint_t *head, listint_t *node)
-{
-	while (1)
-	{
-		if (head == node)
-			return (node);
-		else if (head->next->next == node)
-			return (head->next);
-		else if (head->next->next == node->next)
-			return (head);
-		head = head->next->next;
+		prev = prev->next;
+		sl = sl->next;
 	}
+
+	return (1);
 }
