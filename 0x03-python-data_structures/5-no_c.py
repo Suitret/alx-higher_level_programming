@@ -4,7 +4,7 @@ def no_c(my_string):
     if not my_string:
         return None
 
-    if 'c' and 'C' not in my_string:
+    if 'c' not in my_string and 'C' not in my_string:
         return my_string
 
     new_string = ""
