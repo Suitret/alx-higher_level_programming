@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 def no_c(my_string):
     if not my_string:
-        return
+        return None
 
     new_string = ""
     for char in my_string:
-        if char != 'c' and char != 'C':
+        if char not in "Cc":
             new_string += char
     return new_string
