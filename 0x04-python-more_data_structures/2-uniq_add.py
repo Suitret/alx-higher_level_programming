@@ -2,11 +2,12 @@
 
 def uniq_add(my_list=[]):
 
+    result = 0
+
     if not my_list:
-        return None
+        return result
 
     my_set = set(my_list)
-    result = 0
 
     for val in my_set:
         result += val
