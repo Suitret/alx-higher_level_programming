@@ -3,7 +3,7 @@
 def update_dictionary(a_dictionary, key, value):
 
     if not a_dictionary:
-        a_dictionary = set((key, value))
+        a_dictionary = {key: value}
     else:
         a_dictionary[key] = value
 
