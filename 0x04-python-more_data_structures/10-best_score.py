@@ -6,9 +6,11 @@ def best_score(a_dictionary):
         return None
 
     key_list = list(a_dictionary)
-    best = a_dictionary[key_list[0]]
+    best_score = a_dictionary[key_list[0]]
+    best = key_list[0]
 
     for key in key_list:
-        if a_dictionary[key] > best:
-            best = a_dictionary[key]
+        if a_dictionary[key] > best_score:
+            best_score = a_dictionary[key]
+            best = key
     return best
