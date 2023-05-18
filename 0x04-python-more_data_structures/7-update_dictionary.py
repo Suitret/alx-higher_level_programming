@@ -3,10 +3,8 @@
 def update_dictionary(a_dictionary, key, value):
 
     if not a_dictionary:
-        new_dict = dict()
-    else:
-        new_dict = a_dictionary
+        a_dictionary = dict()
 
-    new_dict[key] = value
-    a_dictionary = new_dict
+    a_dictionary[key] = value
+    new_dict = a_dictionary
     return new_dict
