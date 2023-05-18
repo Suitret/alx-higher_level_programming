@@ -8,5 +8,15 @@ def roman_to_int(roman_string):
     thou = ["MMM", "MM", "M"]
 
     my_list = [unit, tens, cent, thou]
+    year, pos = 0, 0
 
-    cp_roman = list(roman_string)
+    for section in my_list:
+        pos += 1
+        for str_ in section:
+            if str_ in roman_string and pos < 4:
+                year += (9 - section.index(str_))*(10**(pos-1))
+                break
+            elif str_ in roman_string and pos == 4:
+                year += (3 - section.index(str_))*(10**(pos-1))
+                break
+    return year
