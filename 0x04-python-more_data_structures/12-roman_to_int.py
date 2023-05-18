@@ -2,6 +2,9 @@
 
 def roman_to_int(roman_string):
 
+    if not roman_string or not isinstance(roman_string, str):
+        return 0
+
     unit = ["IX", "VIII", "VII", "VI", "V", "IV", "III", "II", "I"]
     tens = ["XC", "LXXX", "LXX", "LX", "L", "XL", "XXX", "XX", "X"]
     cent = ["CM", "DCCC", "DCC", "DC", "D", "CD", "CCC", "CC", "C"]
