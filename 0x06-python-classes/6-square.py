@@ -2,7 +2,7 @@
 
 class Square:
     """class Square that defines a square"""
-    def __init__(self, size=0, position=(0,0)):
+    def __init__(self, size=0, position=(0, 0)):
         """function that initializes attributes
         Args:
             self : the object
@@ -22,9 +22,11 @@ class Square:
             if position[0] >= 0 and position[1] >= 0:
                 self.__position = position
             else:
-                raise TypeError("position must be a tuple of 2 positive integers")
+                msg = "position must be a tuple of 2 positive integers"
+                raise TypeError(msg)
         else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+            msg = "position must be a tuple of 2 positive integers"
+            raise TypeError(msg)
 
     def area(self):
         """function that computes the area of a square
@@ -81,13 +83,15 @@ class Square:
         Returns:
             void
         """
-        if isinstance(value[0], int) and  isinstance(value[1], int):
+        if isinstance(value[0], int) and isinstance(value[1], int):
             if value[0] >= 0 and value[1] >= 0:
                 self.__position = value
             else:
-                raise TypeError("position must be a tuple of 2 positive integers")
+                msg = "position must be a tuple of 2 positive integers"
+                raise TypeError(msg)
         else:
-            raise TypeError("position must be a tuple of 2 positive integers")
+            msg = "position must be a tuple of 2 positive integers"
+            raise TypeError(msg)
 
     def my_print(self):
         """function that prints a square
