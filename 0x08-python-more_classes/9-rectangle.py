@@ -191,6 +191,7 @@ class Rectangle:
             else:
                 return rect_1
 
+    @classmethod
     def square(cls, size=0):
         """function that returns the squared rectangle
         Args:
