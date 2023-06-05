@@ -104,11 +104,12 @@ class Square:
             void
         """
         char = '#' * self.__size
-        for i in range(self.__position[1]):
-            print()
-        for i in range(self.__size):
-            for j in range(self.__position[0]):
-                print(" ", end="")
-            print(char)
         if self.__size == 0:
             print()
+        else:
+            for i in range(self.__position[1]):
+                print()
+            for i in range(self.__size):
+                for j in range(self.__position[0]):
+                    print(" ", end="")
+                print(char)
