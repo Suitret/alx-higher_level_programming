@@ -121,7 +121,7 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             return ""
         else:
-            line = self.print_symbol * self.__width
+            line = str(self.print_symbol) * self.__width
             res = ""
             for i in range(self.__height):
                 res += line
@@ -139,7 +139,7 @@ class Rectangle:
         if self.__height == 0 or self.__width == 0:
             print()
         else:
-            line = self.print_symbol * self.__width
+            line = str(self.print_symbol) * self.__width
             for i in range(self.__height):
                 print(line)
 
@@ -157,7 +157,7 @@ class Rectangle:
         Args:
             self : the object
         Returns:
-            the rectangle
+            void
         """
         print("Bye rectangle...")
         type(self).number_of_instances -= 1
