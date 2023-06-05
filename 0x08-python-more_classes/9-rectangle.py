@@ -191,7 +191,7 @@ class Rectangle:
             else:
                 return rect_1
 
-    def square(self, size=0):
+    def square(cls, size=0):
         """function that returns the squared rectangle
         Args:
             self : the object
@@ -199,4 +199,5 @@ class Rectangle:
         Returns:
             the squared rectangle
         """
-        return Rectangle(size, size)
+        instance = cls(size, size)
+        return instance
