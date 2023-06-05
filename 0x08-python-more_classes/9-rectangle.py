@@ -199,5 +199,4 @@ class Rectangle:
         Returns:
             the squared rectangle
         """
-        instance = cls.Rectangle(size, size)
-        return instance
+        return cls(size, size)
