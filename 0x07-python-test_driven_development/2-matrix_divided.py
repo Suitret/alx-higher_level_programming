@@ -50,7 +50,7 @@ def matrix_divided(matrix, div):
     for row in matrix:
         temp = []
         for cell in row:
-            temp.append(rounded(cell/div, 2))
+            temp.append(round(cell/div, 2))
         new_list.append(temp)
 
     return new_list

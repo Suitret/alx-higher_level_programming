@@ -1,0 +1,32 @@
+==========================
+The module 3-say_my_name
+==========================
+
+	>>> say_my_name = __import__("3-say_my_name").say_my_name
+
+Documentation
+==============
+
+	>>> module_doc = __import__("3-say_my_name").__doc__
+	>>> print(len(module_doc) > 0)
+	True
+
+	>>> func_doc = __import__("3-say_my_name").say_my_name.__doc__
+	>>> print(len(func_doc) > 0)
+	True
+
+Basic
+==========
+If the arguments passed are strings, the operation should happen smoothly
+
+	>>> say_my_name("Bankole", "yemi")
+	My name is Bankole yemi
+
+	>>> say_my_name("Victor", "Ada")
+	My name is Victor Ada
+
+	>>> say_my_name("", "Ada")
+	My name is  Ada
+
+	>>> say_my_name("Victor", "")
+	My name is Victor 

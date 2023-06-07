@@ -6,8 +6,9 @@
 
 def text_indentation(text):
     """function that prints a text
-       with special indentation for 
-	   '.', ':' and '?' 
+    with special indentation for
+    '.', ':' and '?'
+
     Args:
         text : the text
     Returns:
@@ -17,9 +18,13 @@ def text_indentation(text):
     if not isinstance(text, str):
         raise TypeError("text must be a string")
 
+    punctuation_chars = ['.', '?', ':']
+    result = ""
+
     for char in text:
-        if char == '.' or char == ':' or char == '?':
-            print(char, end="")
-            print("\n")
-        else:
-            print(char, end="")
+        result += char
+        if char in punctuation_chars:
+            result += "\n\n"
+
+    result = result.strip()
+    print(result, end="")
