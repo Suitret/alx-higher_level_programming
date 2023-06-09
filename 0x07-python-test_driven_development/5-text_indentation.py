@@ -30,4 +30,16 @@ def text_indentation(text):
         if char in punctuation_chars:
             result += "\n\n"
 
-    print('\n'.join(x.strip() for x in text.split('\n')), end="")
+    newline_count = 0
+
+    for char in result:
+        if char == '\n':
+            newline_count += 1
+        elif char == ' ' and newline_count >= 2:
+            continue
+        else:
+            newline_count = 0
+
+        result += char
+
+    print(result, end="")
