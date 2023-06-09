@@ -19,7 +19,7 @@ def print_square(size):
     if isinstance(size, float) and size < 0:
         raise TypeError(msg)
 
-    if size <= 0:
+    if size < 0:
         raise ValueError("size must be >= 0")
 
     size = int(size)
