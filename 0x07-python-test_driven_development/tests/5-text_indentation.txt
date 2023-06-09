@@ -26,6 +26,11 @@ If the argument ``text`` is a string, then the operation happen smoothly
 	<BLANKLINE>
 	okay
 
+	>>> text = "Yes this is it. Were you going there? okay"
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
+
 ERRORS: If argument is not str
 ========++++===================
 
