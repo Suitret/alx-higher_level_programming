@@ -31,6 +31,7 @@ def text_indentation(text):
             result += "\n\n"
 
     newline_count = 0
+    my_text = ""
 
     for char in result:
         if char == '\n':
@@ -40,6 +41,6 @@ def text_indentation(text):
         else:
             newline_count = 0
 
-        result += char
+        my_text += char
 
-    print(result, end="")
+    print(my_text, end="")
