@@ -42,6 +42,9 @@ Mixed Integers and Floats
 	>>> matrix_divided(matrix, 3)
 	[[0.33, 0.73, 1.0], [1.33, 1.83, 2.0]]
 
+	>>> matrix_divided(matrix, float('inf'))
+	[[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Error Handling
 ===============
 various conditions will throw errors and exceptions
