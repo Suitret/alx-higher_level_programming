@@ -1,0 +1,64 @@
+=================================
+The module matrix_mul
+=================================
+
+    >>> matrix_mul = __import__("matrix_mul").matrix_mul
+
+    >>> matrix_a = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_b = [[7, 8], [9, 10], [11, 12]]
+    >>> matrix_mul(matrix_a, matrix_b)
+    [[58, 64], [139, 154]]
+
+    >>> matrix_c = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_d = [[7, 8], [9, 10], [11, 12], [13, 14]]
+    >>> matrix_mul(matrix_c, matrix_d)
+    Traceback (most recent call last):
+    ValueError: m_a and m_b can't be multiplied
+
+    >>> matrix_e = [[]]
+    >>> matrix_f = [[1]]
+    >>> matrix_mul(matrix_e, matrix_f)
+    Traceback (most recent call last):
+    ValueError: m_a can't be empty
+
+    >>> matrix_e = [[1]]
+    >>> matrix_f = [[]]
+    >>> matrix_mul(matrix_e, matrix_f)
+    Traceback (most recent call last):
+    ValueError: m_b can't be empty
+
+    >>> matrix_g = [[1, 2, 'hello'], [4, 5, 6]]
+    >>> matrix_h = [[7, 8], [9, 10], [11, 12]]
+    >>> matrix_mul(matrix_g, matrix_h)
+    Traceback (most recent call last):
+    TypeError: m_a should contain only integers or floats
+
+    >>> matrix_g = [[1, 2, 'hello'], [4, 5, 6]]
+    >>> matrix_h = [[7, 8], [9, 10], [11, 12]]
+    >>> matrix_mul(matrix_h, matrix_g)
+    Traceback (most recent call last):
+    TypeError: m_b should contain only integers or floats
+
+    >>> matrix_i = [[1, 2, 3], [4, 5, 6]]
+    >>> matrix_j = [[7, 8], [9, 10, 11], [12]]
+    >>> matrix_mul(matrix_i, matrix_j)
+    Traceback (most recent call last):
+    TypeError: each row of m_a must be of the same size
+
+    >>> matrix_k = 1
+    >>> matrix_l = [[7, 8], [9, 10], [11, 12]]
+    >>> matrix_mul(matrix_k, matrix_l)
+    Traceback (most recent call last):
+    TypeError: m_a must be a list
+
+    >>> matrix_k = 1
+    >>> matrix_l = [[7, 8], [9, 10], [11, 12]]
+    >>> matrix_mul(matrix_l, matrix_k)
+    Traceback (most recent call last):
+    TypeError: m_b must be a list
+
+    >>> matrix_o = 1
+    >>> matrix_p = 2
+    >>> matrix_mul(matrix_o, matrix_p)
+    Traceback (most recent call last):
+    TypeError: m_a must be a list or m_b must be a list
