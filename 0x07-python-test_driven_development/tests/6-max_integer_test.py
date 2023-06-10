@@ -32,5 +32,21 @@ class TestMaxInteger(unittest.TestCase):
     def test_basic_(self):
         self.assertEqual(max_integer([6, 1, 2, 3]), 6)
 
+    def test_max_at_end(self):
+        self.assertEqual(max_integer([1, 2, 3, 4, 5]), 5)
+
+    def test_max_at_beginning(self):
+        self.assertEqual(max_integer([5, 4, 3, 2, 1]), 5)
+
+    def test_max_in_middle(self):
+        self.assertEqual(max_integer([1, 3, 5, 2, 4]), 5)
+
+    def test_one_negative_number(self):
+        self.assertEqual(max_integer([-1, -2, -3, -4]), -1)
+
+    def test_only_negative_numbers(self):
+        self.assertEqual(max_integer([-5, -3, -1, -4, -2]), -1)
+
+
 if __name__ == '__main__':
     unittest.main()
