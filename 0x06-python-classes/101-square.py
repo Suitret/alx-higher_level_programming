@@ -129,9 +129,7 @@ class Square:
         """
         res = ""
         char = '#' * self.__size
-        if self.__size == 0:
-            res += '\n'
-        else:
+        if self.__size > 0:
             for i in range(self.__position[1]):
                 res += '\n'
             for i in range(self.__size):
