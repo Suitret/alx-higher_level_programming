@@ -11,9 +11,9 @@ class BaseGeometry:
         Args:
             self : the object
         Returns:
-            void
+            area
         """
-        raise Exception("area() is not implemented")
+        return self.__width * self.__lenght
 
     def integer_validator(self, name, value):
         """function that validates value
@@ -47,3 +47,14 @@ class Rectangle(BaseGeometry):
         self.__width = width
         super().integer_validator(self, "", height)
         self.__height = height
+
+    def __str__(self):
+        """function that returns attributes
+           of the rectangle
+        Args:
+            self : the object
+        Returns:
+            void
+        """
+        rect = "[Rectangle] "
+        rect += str(self.__width) + "/" + str(self.__height)
