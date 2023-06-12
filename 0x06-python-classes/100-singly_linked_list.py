@@ -22,7 +22,7 @@ class Node:
 
         self.__data = data
 
-        if not isinstance(next_node, Node) or not None:
+        if not isinstance(next_node, Node) and next_node != None:
             raise TypeError("next_node must be a Node object")
 
         self.__next_node = next_node
@@ -70,7 +70,7 @@ class Node:
         Returns:
             void
         """
-        if not isinstance(value, Node) or not None:
+        if not isinstance(value, Node) and value != None:
             raise TypeError("next_node must be a Node object")
 
         self.__next_node = value
