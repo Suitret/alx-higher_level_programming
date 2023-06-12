@@ -25,11 +25,12 @@ class BaseGeometry:
             void
         """
         if not isinstance(value, int):
-            raise TypeError("<name> must be an integer")
+            temp = name + " must be an integer"
+            raise TypeError(temp)
 
         if value <= 0:
-            raise ValueError("<name> must be greater than 0")
-
+            temp = name + " must be greater than 0"
+            raise TypeError(temp)
 
 class Rectangle(BaseGeometry):
     """class Rectangle that is not empty"""
@@ -43,7 +44,7 @@ class Rectangle(BaseGeometry):
         Returns:
             void
         """
-        super().integer_validator(self, "", width)
+        super().integer_validator(self, "width", width)
         self.__width = width
-        super().integer_validator(self, "", height)
+        super().integer_validator(self, "height", height)
         self.__height = height
