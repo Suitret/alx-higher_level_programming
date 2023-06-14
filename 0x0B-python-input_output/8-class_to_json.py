@@ -4,11 +4,15 @@
 
 
 def class_to_json(obj):
-     """function that returns the dictionary description
+    """function that returns the dictionary description
         Args:
             obj : the object
         Returns:
             dict
     """
-    import json
-    return json.loads(obj)
+    if isinstance(obj, dict):
+        return obj
+    json_dict = {}
+    for attr, value in obj.__dict__.items():
+        json_dict[attr] = value
+    return json_dict
