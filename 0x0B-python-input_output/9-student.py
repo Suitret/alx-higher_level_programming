@@ -28,4 +28,7 @@ class Student:
         Returns:
             dict
         """
-        return self.__dict__.items()
+        json_dict = {}
+        for attr, value in obj.__dict__.items():
+            json_dict[attr] = value
+        return json_dict
