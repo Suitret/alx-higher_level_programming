@@ -12,7 +12,7 @@ def load_from_json_file(filename):
     """
     import json
 
-    with open(filename, mode="w", encoding="utf-8") as f:
+    with open(filename, encoding="utf-8") as f:
         content = f.read()
 
     return json.loads(content)
