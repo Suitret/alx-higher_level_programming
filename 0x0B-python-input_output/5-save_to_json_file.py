@@ -14,10 +14,5 @@ def save_to_json_file(my_obj, filename):
     """
     import json
 
-    if isinstance(my_obj, set):
-        my_obj = list(my_obj)
-
-    json_str = json.dumps(my_obj)
-
     with open(filename, mode="w", encoding="utf-8") as f:
-        f.write(json_str)
+        json.dump(my_obj, f)
