@@ -29,6 +29,10 @@ class Student:
             dict
         """
         json_dict = {}
-        for attr, value in obj.__dict__.items():
+        for attr, value in self.__dict__.items():
             json_dict[attr] = value
         return json_dict
+
+
+a = Student("Tom", "Smith", 89)
+print(a.to_json())
