@@ -34,7 +34,7 @@ class Student:
         if isinstance(attrs, list):
             flag = True
         for attr, value in self.__dict__.items():
-            if flag and attr in attrs:
+            if (flag and attr in attrs) or (attrs is None):
                 json_dict[attr] = value
 
         return json_dict
