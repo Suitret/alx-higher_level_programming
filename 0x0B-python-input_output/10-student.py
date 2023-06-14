@@ -33,8 +33,8 @@ class Student:
         for attr, value in self.__dict__.items():
             json_dict[attr] = value
         if isinstance(attrs, list):
-            for key in attrs:
-                if key in json_dict.keys():
+            for key in json_dict.keys():
+                if key not in attrs:
                     json_dict.pop(key)
 
         return json_dict
