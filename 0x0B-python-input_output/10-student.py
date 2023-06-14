@@ -30,11 +30,11 @@ class Student:
             dict
         """
         json_dict = {}
-        for attr, value in self.__dict__.items():
-            json_dict[attr] = value
+        flag = False
         if isinstance(attrs, list):
-            for key in json_dict.keys():
-                if key not in attrs:
-                    json_dict.pop(key)
+            flag = True
+        for attr, value in self.__dict__.items():
+            if flag and attr in attrs:
+                json_dict[attr] = value
 
         return json_dict
