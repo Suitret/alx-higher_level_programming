@@ -13,6 +13,7 @@ if argc > 0:
     arguments = sys.argv[1:]
 
     with open("add_item.json", "a+") as f:
+        f.seek(0)
         nb_chars = f.read()
         if nb_chars == "":
             obj = []
