@@ -1,4 +1,5 @@
-import unittest
+import unittest, sys
+from io import StringIO
 from models.rectangle import Rectangle
 
 
@@ -21,7 +22,7 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(rect2.height, 10)
         self.assertEqual(rect2.x, 0)
         self.assertEqual(rect2.y, 0)
-        self.assertEqual(rect2.id, None)
+        self.assertEqual(rect2.id, 2)
 
     def test_setters(self):
         """Test setters for width, height, x, and y attributes
@@ -106,7 +107,34 @@ class TestRectangle(unittest.TestCase):
         self.assertEqual(str(rect), "[Rectangle] (4) 2/1 - 5/10")
 
         rect2 = Rectangle(3, 2, 0, 0)
-        self.assertEqual(str(rect2), "[Rectangle] (1) 0/0 - 3/2")
+        self.assertEqual(str(rect2), "[Rectangle] (8) 0/0 - 3/2")
+
+    def test_update_no_keyword_args(self):
+        rect = Rectangle(1, 2, 3, 4, 5)
+        rect.update(10, 20, 30, 40, 50)
+        self.assertEqual(rect.id, 10)
+        self.assertEqual(rect.width, 20)
+        self.assertEqual(rect.height, 30)
+        self.assertEqual(rect.x, 40)
+        self.assertEqual(rect.y, 50)
+
+    def test_update_partial_args(self):
+        rect = Rectangle(1, 2, 3, 4, 5)
+        rect.update(10, 20)
+        self.assertEqual(rect.id, 10)
+        self.assertEqual(rect.width, 20)
+        self.assertEqual(rect.height, 2)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 4)
+
+    def test_update_single_arg(self):
+        rect = Rectangle(1, 2, 3, 4, 5)
+        rect.update(10)
+        self.assertEqual(rect.id, 10)
+        self.assertEqual(rect.width, 1)
+        self.assertEqual(rect.height, 2)
+        self.assertEqual(rect.x, 3)
+        self.assertEqual(rect.y, 4)
 
 
 if __name__ == '__main__':
