@@ -39,6 +39,29 @@ class TestRectangle(unittest.TestCase):
         rect.y = 4
         self.assertEqual(rect.y, 4)
 
+    def test_invalid_setters(self):
+        """Test invalid values in setters
+        """
+        rect = Rectangle(5, 10)
+
+        with self.assertRaises(TypeError):
+            rect.width = "not_an_integer"
+        with self.assertRaises(TypeError):
+            rect.height = "not_an_integer"
+        with self.assertRaises(TypeError):
+            rect.x = "not_an_integer"
+        with self.assertRaises(TypeError):
+            rect.y = "not_an_integer"
+
+        with self.assertRaises(ValueError):
+            rect.width = 0
+        with self.assertRaises(ValueError):
+            rect.height = -5
+        with self.assertRaises(ValueError):
+            rect.x = -2
+        with self.assertRaises(ValueError):
+            rect.y = -3
+
 
 if __name__ == '__main__':
     unittest.main()
