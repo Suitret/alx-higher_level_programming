@@ -72,6 +72,33 @@ class TestRectangle(unittest.TestCase):
         rect.height = 12
         self.assertEqual(rect.area(), 96)
 
+    def test_display(self):
+        """Test display method
+        """
+        rect = Rectangle(3, 2)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect.display()
+        sys.stdout = sys.__stdout__
+        expected_output = "###\n###\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+        rect2 = Rectangle(4, 3, 2, 1)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect2.display()
+        sys.stdout = sys.__stdout__
+        expected_output = "\n  ####\n  ####\n  ####\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
+        rect3 = Rectangle(1, 1)
+        captured_output = StringIO()
+        sys.stdout = captured_output
+        rect3.display()
+        sys.stdout = sys.__stdout__
+        expected_output = "#\n"
+        self.assertEqual(captured_output.getvalue(), expected_output)
+
 
 if __name__ == '__main__':
     unittest.main()
