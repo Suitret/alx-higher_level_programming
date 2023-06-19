@@ -19,7 +19,7 @@ class Rectangle(Base):
             id (int): The id of the rectangle
         Raises:
             TypeError: If any of the input values is not an integer
-            ValueError: If any of the input values is not within the valid range
+            ValueError: If any of the input values is not within the good range
         """
         super().__init__(id)
         self.width = width
@@ -110,3 +110,10 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
+
+    def area(self):
+        """Calculate and return the area of the rectangle
+        Returns:
+            int: The area of the rectangle
+        """
+        return self.width * self.height
