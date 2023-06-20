@@ -1,4 +1,5 @@
-import unittest, sys
+import unittest
+import sys
 from io import StringIO
 from models.rectangle import Rectangle
 
