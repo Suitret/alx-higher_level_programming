@@ -1,3 +1,3 @@
 -- list all privileges
-SELECT * FROM mysql.user WHERE User = 'user_0d_1' AND Host = 'localhost';
-SELECT * FROM mysql.user WHERE User = 'user_0d_2' AND Host = 'localhost';
+SELECT * FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE GRANTEE LIKE 'user_0d_1@localhost';
+SELECT * FROM INFORMATION_SCHEMA.USER_PRIVILEGES WHERE GRANTEE LIKE 'user_0d_2@localhost';
