@@ -5,6 +5,6 @@ SELECT
 	FROM tv_shows AS A
 	JOIN tv_show_genres AS B
 	ON A.id = B.show_id
-	GROUP BY A.title
+	GROUP BY genre
 	WHERE number_of_shows > 0
 	ORDER BY number_of_shows DESC;
