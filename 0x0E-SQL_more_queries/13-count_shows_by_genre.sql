@@ -6,5 +6,4 @@ SELECT
 	INNER JOIN tv_show_genres AS B
 	ON A.id = B.show_id
 	GROUP BY A.title
-	WHERE B.show_id IS NULL
 	ORDER BY number_of_shows DESC;
