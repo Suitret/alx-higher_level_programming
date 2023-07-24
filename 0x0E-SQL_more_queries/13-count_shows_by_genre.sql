@@ -2,9 +2,9 @@
 SELECT
 	A.title AS genre,
     COUNT(B.genre_id) AS number_of_shows
-	FROM tv_shows AS A
+	FROM tv_genres AS A
 	LEFT JOIN tv_show_genres AS B
-	ON A.id = B.show_id
+	ON A.id = B.genre_id
 	GROUP BY genre
 	HAVING number_of_shows > 0
 	ORDER BY number_of_shows DESC;
