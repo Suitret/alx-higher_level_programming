@@ -4,7 +4,11 @@ const inputValue = process.argv[2];
 const intValue = parseInt(inputValue);
 
 if (isNaN(intValue)) {
-  console.log('Not a number');
+  console.log('Missing size');
 } else {
-  console.log('My number:', intValue);
+  let i = 0, j;
+  while (i < intValue) {
+    console.log('X'.repeat(intValue));
+	i++;
+  }
 }
