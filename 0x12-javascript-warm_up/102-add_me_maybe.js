@@ -1,10 +1,8 @@
 #!/usr/bin/node
 
-const inputValue = process.argv[2];
-const intValue = parseInt(inputValue);
-
-if (isNaN(intValue)) {
-  console.log('Not a number');
-} else {
-  console.log('My number:', intValue);
+function addMeMaybe(number, theFunction) {
+  number += 1;
+  theFunction(number);
 }
+
+module.exports.addMeMaybe = addMeMaybe;
