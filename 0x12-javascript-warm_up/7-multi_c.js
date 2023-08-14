@@ -4,7 +4,11 @@ const inputValue = process.argv[2];
 const intValue = parseInt(inputValue);
 
 if (isNaN(intValue)) {
-  console.log('Not a number');
+  console.log('Missing number of occurrences');
 } else {
-  console.log('My number:', intValue);
+  let i = 0;
+  while (i < intValue) {
+    console.log('C is fun');
+    i++;
+  }
 }
