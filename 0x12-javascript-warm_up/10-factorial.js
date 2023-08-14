@@ -3,8 +3,12 @@
 const inputValue = process.argv[2];
 const intValue = parseInt(inputValue);
 
-if (isNaN(intValue)) {
-  console.log('Not a number');
+function facto (a) {
+  if (a <= 1) { return 1; } else { return a * facto(a - 1); }
+}
+
+if (isNaN(intValue) || intValue <= 1) {
+  console.log(1);
 } else {
-  console.log('My number:', intValue);
+  console.log(facto(intValue));
 }
