@@ -1,10 +1,16 @@
 #!/usr/bin/node
 
-const inputValue = process.argv[2];
-const intValue = parseInt(inputValue);
+const input1 = process.argv[2];
+const int1 = parseInt(input1);
+const input2 = process.argv[3];
+const int2 = parseInt(input2);
 
-if (isNaN(intValue)) {
-  console.log('Not a number');
+function add (a, b) {
+  return (a + b);
+}
+
+if (isNaN(int1) || isNaN(int2)) {
+  console.log('NaN');
 } else {
-  console.log('My number:', intValue);
+  console.log(add(int1, int2));
 }
