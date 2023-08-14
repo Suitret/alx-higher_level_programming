@@ -1,10 +1,20 @@
 #!/usr/bin/node
 
-const inputValue = process.argv[2];
-const intValue = parseInt(inputValue);
+const myObject = {
+  type: 'object',
+  value: 12,
+  incr: function () {
+    this.value++;
+  }
+};
 
-if (isNaN(intValue)) {
-  console.log('Not a number');
-} else {
-  console.log('My number:', intValue);
-}
+console.log(myObject);
+
+myObject.incr();
+console.log(myObject);
+
+myObject.incr();
+console.log(myObject);
+
+myObject.incr();
+console.log(myObject);
