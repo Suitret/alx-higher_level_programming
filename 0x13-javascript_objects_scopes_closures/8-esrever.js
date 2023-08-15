@@ -1,5 +1,6 @@
 #!/usr/bin/node
 
-class Rectangle {
-}
-module.exports = Rectangle;
+exports.esrever = function (list) {
+  const reversedArray = list.reduce((acc, current) => [current, ...acc], []);
+  return reversedArray;
+};
