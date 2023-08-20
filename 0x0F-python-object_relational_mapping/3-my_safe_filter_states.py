@@ -7,16 +7,26 @@ if __name__ == "__main__":
     import MySQLdb
     from sys import argv
 
-    mydb = MySQLdb.connect(host="localhost",
-                           port=3306,
-                           user=argv[1],
-                           passwd=argv[2],
-                           db=argv[3])
-    cursor = mydb.cursor()
-    query = "SELECT * FROM states WHERE name='%s' ORDER BY id ASC;"
-    cursor.execute(query, (argv[4],))
-    query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
-    cursor.close()
-    mydb.close()
+    if len(sys.argv) != 5:
+        sys.exit(1)
+    try:
+        db = MySQLdb.connect(
+            host="localhost",
+            user=argv[1],
+            passwd=argv[2],
+            db=argv[3],
+            port=3306
+        )
+        cursor = db.cursor()
+        query = "SELECT * FROM states WHERE name = %s ORDER BY id"
+        cursor.execute(query, (argv[4],))
+        results = cursor.fetchall()
+
+        for row in results:
+            print(row)
+
+        cursor.close()
+        db.close()
+
+    except MySQLdb.Error as e:
+        sys.exit(1)
