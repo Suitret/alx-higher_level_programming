@@ -13,7 +13,7 @@ if __name__ == "__main__":
                            passwd=argv[2],
                            db=argv[3])
     cursor = mydb.cursor()
-    query = "SELECT * FROM states WHERE name REGEXP '{}' ORDER BY id ASC;"
+    query = "SELECT * FROM states WHERE name='{}' ORDER BY id ASC;"
     cursor.execute(query.format(argv[4]))
     query_rows = cursor.fetchall()
     for row in query_rows:
