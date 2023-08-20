@@ -1,20 +1,16 @@
 #!/usr/bin/python3
-"""script that lists all states from the database hbtn_0e_0_usa"""
+"""Module that contains the class definition of a State
+   and an instance Base = declarative_base()
+"""
 
-if __name__ == "__main__":
-    import MySQLdb
-    from sys import argv
+from sqlalchemy import Column, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
 
-    mydb = MySQLdb.connect(host="localhost",
-                           port=3306,
-                           user=argv[1],
-                           passwd=argv[2],
-                           db=argv[3])
-    cursor = mydb.cursor()
-    query = "SELECT * FROM states ORDER BY id ASC"
-    cursor.execute(query)
-    query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
-    cursor.close()
-    mydb.close()
+Base = declarative_base()
+
+class State(Base):
+    """State class that represents a state table"""
+    __tablename__ = 'states'
+
+    id = Column(Integer, primary_key=True, nullable=False)
+    name = Column(String(128), nullable=False)
