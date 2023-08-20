@@ -12,13 +12,13 @@ if __name__ == "__main__":
                            passwd=argv[2],
                            db=argv[3])
     cursor = mydb.cursor()
-    query = "SELECT cities.name \
+    query = "SELECT GROUP_CONCAT(cities.name SEPARATOR ', ') \
             FROM cities \
             JOIN states ON cities.state_id = states.id \
             WHERE states.name = %s \
             ORDER BY cities.id;"
     cursor.execute(query, (argv[4],))
-    query_rows = list(cursor.fetchall())
-    print(str(query_rows))
+    query_rows = cursor.fetchone()
+    print(query_rows)
     cursor.close()
     mydb.close()
