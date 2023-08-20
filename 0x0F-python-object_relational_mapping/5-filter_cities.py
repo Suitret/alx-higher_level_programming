@@ -12,12 +12,14 @@ if __name__ == "__main__":
                            passwd=argv[2],
                            db=argv[3])
     cursor = mydb.cursor()
-    query = "SELECT GROUP_CONCAT(cities.name ORDER BY cities.id ASC \
-            SEPARATOR ', ') FROM cities \
+    query = "SELECT cities.name \
+            FROM cities \
             JOIN states ON cities.state_id = states.id \
-            WHERE states.name = %s"
+            WHERE states.name = %s \
+            ORDER BY cities.id;"
     cursor.execute(query, (argv[4],))
-    query_rows = cursor.fetchone()
-    print(query_rows)
+    query_rows = cursor.fetchall()
+    cities = ', '.join(row[0] for row in query_rows)
+    print(cities)
     cursor.close()
     mydb.close()
