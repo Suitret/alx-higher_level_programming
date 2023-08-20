@@ -12,7 +12,8 @@ if __name__ == "__main__":
                            passwd=argv[2],
                            db=argv[3])
     cursor = mydb.cursor()
-    query = "SELECT * FROM cities ORDER BY id ASC;"
+    query = "SELECT B.id, A.name, B.name FROM states AS A JOIN cities \
+        AS B ON A.id = B.state_id ORDER BY B.id ASC;"
     cursor.execute(query)
     query_rows = cursor.fetchall()
     for row in query_rows:
