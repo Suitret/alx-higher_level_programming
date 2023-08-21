@@ -1,20 +1,15 @@
 #!/usr/bin/python3
-"""script that lists all states from the database hbtn_0e_0_usa"""
+"""
+Contains the class definition of a City.
+"""
 
-if __name__ == "__main__":
-    import MySQLdb
-    from sys import argv
+from sqlalchemy import Column, Integer, String, ForeignKey
+from relationship_state import Base
 
-    mydb = MySQLdb.connect(host="localhost",
-                           port=3306,
-                           user=argv[1],
-                           passwd=argv[2],
-                           db=argv[3])
-    cursor = mydb.cursor()
-    query = "SELECT * FROM states ORDER BY id ASC"
-    cursor.execute(query)
-    query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
-    cursor.close()
-    mydb.close()
+
+class City(Base):
+    """Class definition of a City."""
+    __tablename__ = 'cities'
+    id = Column(Integer, primary_key=True, autoincrement=True, nullable=False)
+    name = Column(String(128), nullable=False)
+    state_id = Column(Integer, ForeignKey('states.id'), nullable=False)
