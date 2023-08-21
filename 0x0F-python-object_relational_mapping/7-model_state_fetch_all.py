@@ -1,20 +1,32 @@
 #!/usr/bin/python3
-"""script that lists all states from the database hbtn_0e_0_usa"""
+"""
+Script that lists all State objects from the database hbtn_0e_6_usa
+"""
+
+import sys
+from model_state import Base, State
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 
 if __name__ == "__main__":
-    import MySQLdb
-    from sys import argv
+    if len(sys.argv) != 4:
+        sys.exit(1)
+    username = sys.argv[1]
+    password = sys.argv[2]
+    db_name = sys.argv[3]
 
-    mydb = MySQLdb.connect(host="localhost",
-                           port=3306,
-                           user=argv[1],
-                           passwd=argv[2],
-                           db=argv[3])
-    cursor = mydb.cursor()
-    query = "SELECT * FROM states ORDER BY id ASC"
-    cursor.execute(query)
-    query_rows = cursor.fetchall()
-    for row in query_rows:
-        print(row)
-    cursor.close()
-    mydb.close()
+    try:
+        engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'\
+				.format(username, password, db_name), pool_pre_ping=True)
+        Base.metadata.create_all(engine)
+
+        Session = sessionmaker(bind=engine)
+        session = Session()
+        states = session.query(State).order_by(State.id).all()
+        for state in states:
+            print("{}: {}".format(state.id, state.name))
+
+        session.close()
+
+    except Exception as e:
+        sys.exit(1)
