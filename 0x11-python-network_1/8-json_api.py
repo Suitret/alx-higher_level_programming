@@ -1,15 +1,27 @@
 #!/usr/bin/python3
-"""script that fetches https://alx-intranet.hbtn.io/status
 """
-
+Python script that sends a POST request to http://0.0.0.0:5000/search_user with
+the letter as a parameter and displays the response accordingly.
+"""
+import requests
+import sys
 
 if __name__ == "__main__":
-    import urllib.request
+    if len(sys.argv) == 2:
+        q = sys.argv[1]
+    else:
+        q = ""
 
-    url = "https://alx-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body_response = response.read()
-        print("Body response:")
-        print("\t- type:", type(body_response))
-        print("\t- content:", body_response)
-        print("\t- type:", body_response.decode('utf-8'))
+    payload = {'q': q}
+    url = 'http://0.0.0.0:5000/search_user'
+
+    try:
+        response = requests.post(url, data=payload)
+        data = response.json()
+
+        if data:
+            print(f"[{data.get('id')}] {data.get('name')}")
+        else:
+            print("No result")
+    except ValueError:
+        print("Not a valid JSON")
