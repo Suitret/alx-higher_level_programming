@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+"""script that sends a request to the specified URL
+"""
 import urllib.request
 import sys
 
