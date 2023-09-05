@@ -1,15 +1,12 @@
 #!/usr/bin/python3
-"""script that fetches https://alx-intranet.hbtn.io/status
+"""script that fetches the specified URL using the requests package
 """
-
+import requests
 
 if __name__ == "__main__":
-    import urllib.request
-
     url = "https://alx-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body_response = response.read()
-        print("Body response:")
-        print("\t- type:", type(body_response))
-        print("\t- content:", body_response)
-        print("\t- type:", body_response.decode('utf-8'))
+    response = requests.get(url)
+
+    print("Body response:")
+    print(f"\t- type: {type(response.text)}")
+    print(f"\t- content: {response.text}")
