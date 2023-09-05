@@ -1,15 +1,16 @@
 #!/usr/bin/python3
-"""script that fetches https://alx-intranet.hbtn.io/status
 """
-
+Python script that sends a request to a URL, displays the body of the response,
+"""
+import requests
+import sys
 
 if __name__ == "__main__":
-    import urllib.request
+    if len(sys.argv) == 2:
+        url = sys.argv[1]
 
-    url = "https://alx-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body_response = response.read()
-        print("Body response:")
-        print("\t- type:", type(body_response))
-        print("\t- content:", body_response)
-        print("\t- type:", body_response.decode('utf-8'))
+        response = requests.get(url)
+        print(response.text)
+
+        if response.status_code >= 400:
+            print(f"Error code: {response.status_code}")
