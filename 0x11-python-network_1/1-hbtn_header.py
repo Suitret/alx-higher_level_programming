@@ -1,15 +1,13 @@
 #!/usr/bin/python3
-"""script that fetches https://alx-intranet.hbtn.io/status
-"""
-
+import urllib.request
+import sys
 
 if __name__ == "__main__":
-    import urllib.request
+    if len(sys.argv) == 2:
+        url = sys.argv[1]
+        req = urllib.request.Request(url)
 
-    url = "https://alx-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body_response = response.read()
-        print("Body response:")
-        print("\t- type:", type(body_response))
-        print("\t- content:", body_response)
-        print("\t- type:", body_response.decode('utf-8'))
+        with urllib.request.urlopen(req) as response:
+            header_value = response.info().get("X-Request-Id")
+            if header_value:
+                print(header_value)
