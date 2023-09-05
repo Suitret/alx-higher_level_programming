@@ -1,15 +1,17 @@
 #!/usr/bin/python3
-"""script that fetches https://alx-intranet.hbtn.io/status
 """
-
+Python script that sends a POST request to a specified URL with an email
+parameter and displays the body of the response.
+"""
+import requests
+import sys
 
 if __name__ == "__main__":
-    import urllib.request
+    if len(sys.argv) == 3:
+        url = sys.argv[1]
+        email = sys.argv[2]
 
-    url = "https://alx-intranet.hbtn.io/status"
-    with urllib.request.urlopen(url) as response:
-        body_response = response.read()
-        print("Body response:")
-        print("\t- type:", type(body_response))
-        print("\t- content:", body_response)
-        print("\t- type:", body_response.decode('utf-8'))
+        payload = {'email': email}
+        response = requests.post(url, data=payload)
+
+        print(response.text)
