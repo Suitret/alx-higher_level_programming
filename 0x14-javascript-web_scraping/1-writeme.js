@@ -1,18 +1,10 @@
 #!/usr/bin/node
+//arguments + module fs
 const fs = require('fs');
+const file = process.argv[2];
+const string = process.argv[3];
 
-const filePath = process.argv[2]; // Get the file path from command line arguments.
-const contentToWrite = process.argv[3]; // Get the content to write from command line arguments.
-
-// Check if both file path and content to write were provided as arguments.
-if (!filePath || !contentToWrite) {
-  console.error('Usage: node 1-writeme.js <file-path> "<content-to-write>"');
-  process.exit(1);
-}
-
-// Write the content to the file in utf-8 encoding.
-fs.writeFile(filePath, contentToWrite, 'utf8', (error) => {
-  if (error) {
-    console.error(error); // Print the error object if an error occurred while writing.
-  }
+//writing to file
+fs.writeFile(file, string, 'utf-8', function (err) {
+  if (err) console.log(err);
 });
