@@ -23,7 +23,7 @@ request.get(movieUrl, (error, response, body) => {
     const characterUrls = movieData.characters;
 
     // Function to fetch and print character names in the correct order.
-    function fetchAndPrintCharacterNames(index) {
+    function fetchAndPrintCharacterNames (index) {
       if (index < characterUrls.length) {
         const characterUrl = characterUrls[index];
         request.get(characterUrl, (charError, charResponse, charBody) => {
