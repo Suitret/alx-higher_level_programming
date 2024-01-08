@@ -1,19 +1,48 @@
 #!/usr/bin/node
-const fs = require('fs');
+const request = require('request');
 
-const filePath = process.argv[2]; // Get the file path from command line arguments.
+const movieId = process.argv[2]; // Get the Movie ID from command line arguments.
 
-// Check if the file path was provided as an argument.
-if (!filePath) {
-  console.error('Usage: node 0-readme.js <file-path>');
+// Check if the Movie ID was provided as an argument.
+if (!movieId) {
+  console.error('Usage: node 101-starwars_characters.js <Movie-ID>');
   process.exit(1);
 }
 
-// Read the content of the file in utf-8 encoding.
-fs.readFile(filePath, 'utf8', (error, data) => {
+// Define the URL for the Star Wars API to retrieve movie details.
+const movieUrl = `https://swapi-api.alx-tools.com/api/films/${movieId}/`;
+
+// Make a GET request to the specified movie URL using the "request" module.
+request.get(movieUrl, (error, response, body) => {
   if (error) {
-    console.error(error); // Print the error object if an error occurred.
+    console.error('Error:', error);
+  } else if (response.statusCode === 200) {
+    const movieData = JSON.parse(body);
+
+    // Fetch the character URLs from the movie data.
+    const characterUrls = movieData.characters;
+
+    // Function to fetch and print character names in the correct order.
+    function fetchAndPrintCharacterNames (index) {
+      if (index < characterUrls.length) {
+        const characterUrl = characterUrls[index];
+        request.get(characterUrl, (charError, charResponse, charBody) => {
+          if (charError) {
+            console.error('Error:', charError);
+          } else if (charResponse.statusCode === 200) {
+            const characterData = JSON.parse(charBody);
+            console.log(characterData.name);
+
+            // Fetch and print the next character name recursively.
+            fetchAndPrintCharacterNames(index + 1);
+          }
+        });
+      }
+    }
+
+    // Start fetching and printing character names.
+    fetchAndPrintCharacterNames(0);
   } else {
-    console.log(data); // Print the file content if reading was successful.
+    console.error('Movie not found. Status code:', response.statusCode);
   }
 });
