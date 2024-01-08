@@ -1,0 +1,3 @@
+for i in 4-starwars_count.js 5-request_store.js 6-completed_tasks.js 100-starwars_characters.js 101-starwars_characters.js 3-starwars_title.js 2-statuscode.js 1-writeme.js; do
+  cp 0-readme.js "${i}"
+done
