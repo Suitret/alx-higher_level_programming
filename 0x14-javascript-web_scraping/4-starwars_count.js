@@ -1,19 +1,24 @@
 #!/usr/bin/node
-const fs = require('fs');
+// new version
+const request = require('request');
+const url = process.argv[2];
 
-const filePath = process.argv[2]; // Get the file path from command line arguments.
-
-// Check if the file path was provided as an argument.
-if (!filePath) {
-  console.error('Usage: node 0-readme.js <file-path>');
-  process.exit(1);
-}
-
-// Read the content of the file in utf-8 encoding.
-fs.readFile(filePath, 'utf8', (error, data) => {
-  if (error) {
-    console.error(error); // Print the error object if an error occurred.
+request(url, function (err, response, body) {
+  if (err) {
+    console.log(err);
+  } else if (response.statusCode === 200) {
+    const films = JSON.parse(body).results;
+    let count = 0;
+    for (const filmIndex in films) {
+      const filmChars = films[filmIndex].characters;
+      for (const charIndex in filmChars) {
+        if (filmChars[charIndex].includes('18')) {
+          count++;
+        }
+      }
+    }
+    console.log(count);
   } else {
-    console.log(data); // Print the file content if reading was successful.
+    console.log('An error occured. Status code: ' + response.statusCode);
   }
 });
